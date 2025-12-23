@@ -6,13 +6,30 @@ require_once 'db.php';
 $defaultFirstName = $_SESSION['first_name'] ?? '';
 $defaultLastName = $_SESSION['last_name'] ?? '';
 
+// Generate Random Citizen ID (13 digits)
+$randCitizenId = '';
+for ($i = 0; $i < 13; $i++) {
+    $randCitizenId .= mt_rand(0, 9);
+}
+
+// Generate Random BIB (4 digits)
+$randBib = mt_rand(1001, 9999);
+
 $runner = [
     'reg_id' => '', 
     'first_name' => $defaultFirstName, 
     'last_name' => $defaultLastName, 
     'date_of_birth' => '',
-    'gender' => 'Male', 'citizen_id' => '', 'phone' => '', 'email' => '', 'address' => '',
-    'category_id' => '', 'pay_status' => 'Pending', 'shipping_id' => '', 'status' => 'Pending', 'bib_number' => ''
+    'gender' => 'Male', 
+    'citizen_id' => $randCitizenId, 
+    'phone' => '', 
+    'email' => '', 
+    'address' => '',
+    'category_id' => '', 
+    'pay_status' => 'Pending', 
+    'shipping_id' => '', 
+    'status' => 'Pending', 
+    'bib_number' => $randBib
 ];
 $isEdit = false;
 
