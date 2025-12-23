@@ -295,7 +295,7 @@ try {
                 </li>
                 <?php if ($user_id): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="my_registrations.php"><i class="fas fa-history me-1"></i> ประวัติคำสั่งซื้อ</a>
+                        <a class="nav-link" href="my_registrations.php"><i class="fas fa-history me-1"></i> ตรวจสอบผลการสมัคร</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="check_age_group.php"><i class="fas fa-users me-1"></i> ตรวจสอบกลุ่มอายุ</a>

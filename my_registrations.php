@@ -142,6 +142,10 @@ try {
                             <div class="bg-light p-3 text-center border-top">
                                 <a href="payment.php?reg_id=<?= $reg['reg_id'] ?>" class="btn btn-primary btn-sm rounded-pill w-100">ไปที่หน้าชำระเงิน</a>
                             </div>
+                        <?php elseif ($reg['reg_status'] == 'Paid'): ?>
+                             <div class="bg-light p-3 text-center border-top">
+                                <button class="btn btn-outline-dark btn-sm rounded-pill w-100"><i class="fas fa-ticket-alt me-2"></i>E-Ticket</button>
+                            </div>
                         <?php endif; ?>
                     </div>
                 </div>
