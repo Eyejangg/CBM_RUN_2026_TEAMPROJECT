@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $pdo->commit();
-        header("Location: index.php?msg=saved");
+        header("Location: admin_dashboard.php?msg=saved");
         exit();
 
     } catch (PDOException $e) {
