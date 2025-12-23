@@ -22,6 +22,11 @@ try {
         password VARCHAR(255) NOT NULL,
         first_name VARCHAR(100),
         last_name VARCHAR(100),
+        date_of_birth DATE,
+        gender ENUM('Male', 'Female'),
+        citizen_id VARCHAR(13),
+        phone VARCHAR(20),
+        address TEXT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
 
@@ -35,7 +40,9 @@ try {
         phone VARCHAR(20),
         email VARCHAR(100),
         address TEXT,
-        disabled BOOLEAN DEFAULT FALSE COMMENT 'สถานะผู้พิการ'
+        user_id INT,
+        disabled BOOLEAN DEFAULT FALSE COMMENT 'สถานะผู้พิการ',
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
     );
 
     CREATE TABLE RACE_CATEGORY (
@@ -162,6 +169,24 @@ try {
         }
     }
     echo "Inserted Price Rates.<br>";
+
+    // 4.5 Insert Age Groups
+    // Standard groups: 16-29, 30-39, 40-49, 50-59, 60-99 (60+)
+    $ageGroups = [
+        [16, 29], [30, 39], [40, 49], [50, 59], [60, 99]
+    ];
+    $genders = ['Male', 'Female'];
+    
+    $stmtAgeGroup = $pdo->prepare("INSERT INTO AGE_GROUP (category_id, gender, min_age, max_age) VALUES (?, ?, ?, ?)");
+    
+    foreach ($categoryIds as $catName => $catId) {
+        foreach ($genders as $gender) {
+            foreach ($ageGroups as $range) {
+                 $stmtAgeGroup->execute([$catId, $gender, $range[0], $range[1]]);
+            }
+        }
+    }
+    echo "Inserted Age Groups.<br>";
 
     // 5. Insert Runners (Thai Names)
     $runners = [
