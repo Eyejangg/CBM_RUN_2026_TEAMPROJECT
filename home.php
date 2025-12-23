@@ -298,7 +298,7 @@ try {
                         <a class="nav-link" href="my_registrations.php"><i class="fas fa-history me-1"></i> ประวัติคำสั่งซื้อ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="my_registrations.php"><i class="fas fa-running me-1"></i> ตรวจสอบผลการวิ่ง</a>
+                        <a class="nav-link" href="check_age_group.php"><i class="fas fa-users me-1"></i> ตรวจสอบกลุ่มอายุ</a>
                     </li>
                     <li class="nav-item dropdown ms-lg-3">
                         <a class="nav-link dropdown-toggle btn btn-outline-dark rounded-pill px-4" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">

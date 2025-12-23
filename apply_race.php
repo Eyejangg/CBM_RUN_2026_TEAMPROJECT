@@ -66,9 +66,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $runnerId = $pdo->lastInsertId();
 
         // B. Insert Registration
+        // Generate Random BIB
+        $bib = mt_rand(1000, 9999);
+        // Ensure BIB is unique? For now, just random is fine as per request.
+        
         $regDate = date('Y-m-d');
-        $stmtReg = $pdo->prepare("INSERT INTO REGISTRATION (runner_id, category_id, price_id, shipping_id, reg_date, shirt_size, status) VALUES (?, ?, ?, ?, ?, ?, 'Pending')");
-        $stmtReg->execute([$runnerId, $categoryId, $priceId, $shippingId, $regDate, $shirtSize]);
+        $stmtReg = $pdo->prepare("INSERT INTO REGISTRATION (runner_id, category_id, price_id, shipping_id, reg_date, shirt_size, status, bib_number) VALUES (?, ?, ?, ?, ?, ?, 'Pending', ?)");
+        $stmtReg->execute([$runnerId, $categoryId, $priceId, $shippingId, $regDate, $shirtSize, $bib]);
         $regId = $pdo->lastInsertId();
 
         // C. Insert Payment (Status: Failed/Pending until paid)

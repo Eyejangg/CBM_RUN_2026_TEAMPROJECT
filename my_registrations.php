@@ -21,7 +21,8 @@ try {
             r.reg_date,
             r.status as reg_status,
             p.total_amount,
-            p.status as pay_status
+            p.status as pay_status,
+            run.email
         FROM REGISTRATION r
         JOIN RUNNER run ON r.runner_id = run.runner_id
         JOIN RACE_CATEGORY rc ON r.category_id = rc.category_id
@@ -126,6 +127,10 @@ try {
                                 <div class="col-6">
                                     <small class="text-muted d-block">วันที่สมัคร</small>
                                     <strong><?= date('d M Y', strtotime($reg['reg_date'])) ?></strong>
+                                </div>
+                                <div class="col-12">
+                                    <small class="text-muted d-block">อีเมลที่ใช้สมัคร</small>
+                                    <strong><?= htmlspecialchars($reg['email']) ?></strong>
                                 </div>
                                 <div class="col-12">
                                     <small class="text-muted d-block">ยอดเงินรวม</small>
